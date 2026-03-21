@@ -1,7 +1,8 @@
 /**
  * 영성콘트롤즈 Landing Page Script
  * ================================
- * - mailto: 기반 문의 폼
+ * - 이메일 발송 방식 선택 모달 (Gmail / 네이버 / 기본 앱)
+ * - 폼 진행 상태 표시
  * - 네비게이션 스크롤 효과
  * - 모바일 메뉴 토글
  * - 스크롤 기반 등장 애니메이션
@@ -20,11 +21,35 @@ const navLinks = document.getElementById('navLinks');
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const contactForm = document.getElementById('contactForm');
 const adminEmailDisplay = document.getElementById('adminEmailDisplay');
+const contactEmailLink = document.getElementById('contactEmailLink');
+
+// Modal elements
+const emailModalOverlay = document.getElementById('emailModalOverlay');
+const emailModal = document.getElementById('emailModal');
+const modalClose = document.getElementById('modalClose');
+const sendGmail = document.getElementById('sendGmail');
+const sendNaver = document.getElementById('sendNaver');
+const sendDefault = document.getElementById('sendDefault');
+const previewTo = document.getElementById('previewTo');
+const previewSubject = document.getElementById('previewSubject');
+
+// Progress elements
+const formProgressBar = document.getElementById('formProgressBar');
+const formProgressText = document.getElementById('formProgressText');
 
 // Set admin email display
 if (adminEmailDisplay) {
   adminEmailDisplay.textContent = CONFIG.adminEmail;
 }
+if (contactEmailLink) {
+  contactEmailLink.href = `mailto:${CONFIG.adminEmail}`;
+}
+if (previewTo) {
+  previewTo.textContent = CONFIG.adminEmail;
+}
+
+// ===== Form state (stored for modal use) =====
+let formData = {};
 
 // ===== Navbar Scroll Effect =====
 let lastScrollY = 0;
@@ -65,23 +90,36 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// ===== Contact Form → mailto =====
-contactForm.addEventListener('submit', (e) => {
-  e.preventDefault();
+// ===== Form Progress Tracking =====
+function updateFormProgress() {
+  const name = document.getElementById('senderName').value.trim();
+  const subject = document.getElementById('emailSubject').value.trim();
+  const body = document.getElementById('emailBody').value.trim();
 
+  let filled = 0;
+  if (name) filled++;
+  if (subject) filled++;
+  if (body) filled++;
+
+  const percent = (filled / 3) * 100;
+  if (formProgressBar) formProgressBar.style.width = `${percent}%`;
+  if (formProgressText) formProgressText.textContent = `${filled} / 3 필수 항목`;
+}
+
+// Attach input listeners for progress
+['senderName', 'emailSubject', 'emailBody'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('input', updateFormProgress);
+});
+
+// ===== Build Email Content =====
+function buildEmailContent() {
   const name = document.getElementById('senderName').value.trim();
   const company = document.getElementById('senderCompany').value.trim();
   const phone = document.getElementById('senderPhone').value.trim();
   const subject = document.getElementById('emailSubject').value.trim();
   const body = document.getElementById('emailBody').value.trim();
 
-  // Validate required fields
-  if (!name || !subject || !body) {
-    alert('이름, 제목, 내용은 필수 입력 항목입니다.');
-    return;
-  }
-
-  // Build email body
   let emailBody = '';
   emailBody += `안녕하세요, ${name}입니다.\n\n`;
   if (company) emailBody += `회사명: ${company}\n`;
@@ -93,14 +131,88 @@ contactForm.addEventListener('submit', (e) => {
   if (company) emailBody += ` (${company})`;
   if (phone) emailBody += `\n연락처: ${phone}`;
 
-  // Encode for mailto
-  const encodedSubject = encodeURIComponent(`[문의] ${subject}`);
-  const encodedBody = encodeURIComponent(emailBody);
+  return {
+    to: CONFIG.adminEmail,
+    subject: `[문의] ${subject}`,
+    body: emailBody,
+    rawSubject: subject,
+  };
+}
 
-  // Open mailto link
-  const mailtoLink = `mailto:${CONFIG.adminEmail}?subject=${encodedSubject}&body=${encodedBody}`;
-  window.location.href = mailtoLink;
+// ===== Modal Open / Close =====
+function openModal() {
+  formData = buildEmailContent();
+  if (previewTo) previewTo.textContent = formData.to;
+  if (previewSubject) previewSubject.textContent = formData.subject;
+  emailModalOverlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  emailModalOverlay.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// Close button
+if (modalClose) modalClose.addEventListener('click', closeModal);
+
+// Click overlay to close
+if (emailModalOverlay) {
+  emailModalOverlay.addEventListener('click', (e) => {
+    if (e.target === emailModalOverlay) closeModal();
+  });
+}
+
+// Escape key to close
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
 });
+
+// ===== Contact Form → Open Modal =====
+contactForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById('senderName').value.trim();
+  const subject = document.getElementById('emailSubject').value.trim();
+  const body = document.getElementById('emailBody').value.trim();
+
+  // Validate required fields
+  if (!name || !subject || !body) {
+    alert('이름, 제목, 내용은 필수 입력 항목입니다.');
+    return;
+  }
+
+  openModal();
+});
+
+// ===== Email Sending Functions =====
+
+// Gmail
+if (sendGmail) {
+  sendGmail.addEventListener('click', () => {
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&to=${encodeURIComponent(formData.to)}&su=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(formData.body)}`;
+    window.open(gmailUrl, '_blank');
+    closeModal();
+  });
+}
+
+// 네이버 메일
+if (sendNaver) {
+  sendNaver.addEventListener('click', () => {
+    const naverUrl = `https://mail.naver.com/write?to=${encodeURIComponent(formData.to)}&subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(formData.body)}`;
+    window.open(naverUrl, '_blank');
+    closeModal();
+  });
+}
+
+// 기본 메일 앱 (mailto:)
+if (sendDefault) {
+  sendDefault.addEventListener('click', () => {
+    const mailtoLink = `mailto:${formData.to}?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(formData.body)}`;
+    window.location.href = mailtoLink;
+    closeModal();
+  });
+}
 
 // ===== Scroll Reveal Animation =====
 function revealOnScroll() {
