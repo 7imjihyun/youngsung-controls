@@ -210,7 +210,7 @@ img {
 /* ===== Hero Section ===== */
 .hero {
   position: relative;
-  min-height: 75vh;
+  min-height: 75svh;
   display: flex;
   align-items: center;
   overflow: hidden;
