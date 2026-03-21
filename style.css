@@ -432,18 +432,17 @@ img {
 
 /* ===== Portfolio Slider Nav ===== */
 .portfolio-slider-wrapper {
-  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
   width: 100%;
 }
 
 .slider-nav-btn {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
   width: 44px;
   height: 44px;
   background: var(--bg-white);
@@ -460,9 +459,6 @@ img {
   background: var(--primary);
   color: #fff;
 }
-
-.slider-nav-btn.prev-btn { left: -22px; }
-.slider-nav-btn.next-btn { right: -22px; }
 
 @media (max-width: 768px) {
   .slider-nav-btn { display: none !important; }
@@ -1578,6 +1574,7 @@ textarea.form-input {
   }
 
   .hero {
+    height: auto;
     min-height: 100svh;
     padding-top: 140px;
     padding-bottom: 80px;
