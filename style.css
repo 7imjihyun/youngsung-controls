@@ -430,6 +430,44 @@ img {
   margin: 0 auto;
 }
 
+/* ===== Portfolio Slider Nav ===== */
+.portfolio-slider-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.slider-nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--primary);
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.slider-nav-btn:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+.slider-nav-btn.prev-btn { left: -22px; }
+.slider-nav-btn.next-btn { right: -22px; }
+
+@media (max-width: 768px) {
+  .slider-nav-btn { display: none !important; }
+}
+
 /* ===== Portfolio Section ===== */
 .portfolio {
   background: var(--bg-light);
