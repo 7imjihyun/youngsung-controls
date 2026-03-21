@@ -90,7 +90,12 @@ img {
   right: 0;
   z-index: 1000;
   padding: 16px 0;
-  transition: var(--transition);
+  transition: padding 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  background: transparent;
+  box-shadow: none;
+}
+
+.navbar.scrolled {
   background: var(--primary);
   box-shadow: 0 1px 12px rgba(0, 0, 0, 0.2);
 }
@@ -228,15 +233,17 @@ img {
   position: absolute;
   inset: 0;
   background: linear-gradient(135deg,
-      rgba(11, 15, 26, 0.92) 0%,
-      rgba(11, 15, 26, 0.75) 50%,
-      rgba(11, 15, 26, 0.85) 100%);
+      rgba(11, 15, 26, 0.65) 0%,
+      rgba(11, 15, 26, 0.45) 50%,
+      rgba(11, 15, 26, 0.60) 100%);
 }
 
 .hero-content {
   position: relative;
   z-index: 1;
   max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .hero-badge {
@@ -244,12 +251,14 @@ img {
   align-items: center;
   gap: 8px;
   padding: 8px 20px;
-  background: rgba(0, 16, 61, 0.12);
-  border: 1px solid rgba(0, 16, 61, 0.25);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50px;
   font-size: 0.85rem;
   font-weight: 500;
-  color: #93c5fd;
+  color: rgba(255, 255, 255, 0.95);
   margin-bottom: 28px;
   animation: fadeInUp 0.8s ease-out;
 }
@@ -283,7 +292,7 @@ img {
   font-size: 1.15rem;
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.8;
-  margin-bottom: 40px;
+  margin: 0 auto 40px auto;
   max-width: 560px;
   animation: fadeInUp 0.8s ease-out 0.3s both;
 }
@@ -291,7 +300,8 @@ img {
 .hero-buttons {
   display: flex;
   gap: 16px;
-  animation: fadeInUp 0.8s ease-out 0.45s both;
+  justify-content: center;
+  animation: fadeInUp 0.8s ease-out 0.4s both;
 }
 
 .btn {
