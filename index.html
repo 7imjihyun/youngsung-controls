@@ -23,7 +23,7 @@
         <img src="ys_logo.png" alt="YS Controls" class="logo-img" height="38">
       </a>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#about">회사 소개</a></li>
+        <li><a href="#portfolio">포트폴리오</a></li>
         <li><a href="#services">서비스</a></li>
         <li><a href="#process">업무 프로세스</a></li>
         <li><a href="#contact" class="nav-cta">문의하기</a></li>
@@ -53,13 +53,13 @@
           PLC 제어 시스템 전문 기업
         </div>
         <h1>
-          산업 자동화를 위한<br>최적의 솔루션,<br>
+          <span class="h1-sub">산업 자동화를 위한 최적의 솔루션,</span><br>
           <span class="highlight">영성컨트롤</span>
         </h1>
         <p>
-          정밀한 모션 제어부터 수처리 시스템까지, 최적의 공장 자동화를 설계합니다.
-          까다로운 해외 수입 기계 개조에도 완벽히 대응하는 맞춤형 제어 솔루션.
-          원격 감시 제어 시스템을 통해 당신의 현장을 24시간 빈틈없이 관리합니다.
+          정밀한 모션 제어부터 수처리 시스템까지,<br class="mobile-br"><span class="desktop-br"> </span>최적의 공장 자동화를 설계합니다.<br>
+          까다로운 해외 수입 기계 개조에도<br class="mobile-br"><span class="desktop-br"> </span>완벽히 대응하는 맞춤형 제어 솔루션.<br>
+          원격 감시 제어 시스템을 통해<br class="mobile-br"><span class="desktop-br"> </span>당신의 현장을 24시간 빈틈없이 관리합니다.
         </p>
         <div class="hero-buttons">
           <a href="#contact" class="btn btn-primary">
@@ -73,45 +73,38 @@
     </div>
   </section>
 
-  <!-- ===== About Section ===== -->
-  <section class="section about" id="about">
-    <div class="container">
-      <div class="about-grid">
-        <div class="about-image reveal">
-          <img src="service-plc.png" alt="PLC 제어 시스템">
-        </div>
-        <div class="about-content reveal">
-          <div class="section-label">About Us</div>
-          <h2>신뢰할 수 있는<br><span class="highlight">자동화 파트너</span></h2>
-          <p>
-            영성콘트롤즈는 PLC 기반 제어 시스템 설계 및 산업 자동화 분야의
-            전문 기업입니다. 다양한 산업 현장에서 축적한 경험을 바탕으로,
-            고객의 생산 환경에 최적화된 맞춤형 솔루션을 제공합니다.
-          </p>
-          <p>
-            Siemens, Mitsubishi, LS산전 등 주요 PLC 플랫폼에 대한
-            폭넓은 기술력을 보유하고 있으며, 설계부터 시운전, 유지보수까지
-            토탈 서비스를 제공합니다.
-          </p>
-          <div class="about-features">
-            <div class="about-feature">
-              <div class="icon">⚡</div>
-              PLC 프로그래밍
-            </div>
-            <div class="about-feature">
-              <div class="icon">🔧</div>
-              제어판넬 설계
-            </div>
-            <div class="about-feature">
-              <div class="icon">🏭</div>
-              스마트 팩토리
-            </div>
-            <div class="about-feature">
-              <div class="icon">📊</div>
-              HMI/SCADA
-            </div>
+  <!-- ===== Portfolio Section ===== -->
+  <section class="section portfolio" id="portfolio">
+    <div class="container mobile-no-pad">
+      <div class="section-header reveal" style="padding: 0 24px;">
+        <div class="section-label">Portfolio</div>
+        <h2>주요 수행 프로젝트</h2>
+      </div>
+      <div class="portfolio-slider">
+        <div class="portfolio-item reveal">
+          <div class="portfolio-img"><img src="service-plc.png" alt="프로젝트 1"></div>
+          <div class="portfolio-content">
+            <h4>스마트 팩토리 구축</h4>
+            <p>고효율 자동화 제어반 설계 및 모니터링 시스템 연동</p>
           </div>
         </div>
+        <div class="portfolio-item reveal">
+          <div class="portfolio-img"><img src="service-plc.png" alt="프로젝트 2"></div>
+          <div class="portfolio-content">
+            <h4>수처리 제어 시스템</h4>
+            <p>안정적인 무인 원격 감시 및 이중화 제어 로직 설계</p>
+          </div>
+        </div>
+        <div class="portfolio-item reveal">
+          <div class="portfolio-img"><img src="service-plc.png" alt="프로젝트 3"></div>
+          <div class="portfolio-content">
+            <h4>수입 기계 개조 · 수리</h4>
+            <p>노후 PLC 교체 및 생산 환경에 맞춘 제어반 커스터마이징</p>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-action reveal">
+        <a href="#portfolioDetails" class="btn btn-primary portfolio-btn">포트폴리오 자세히 보기 →</a>
       </div>
     </div>
   </section>
@@ -119,10 +112,13 @@
   <!-- ===== Services Section ===== -->
   <section class="section services" id="services">
     <div class="container">
-      <div class="section-header reveal">
+      <div class="section-header reveal" style="margin-bottom: 48px;">
         <div class="section-label">Services</div>
         <h2>핵심 서비스</h2>
-        <p>고객의 생산 환경에 맞는 최적의 자동화 솔루션을 제공합니다</p>
+        <p style="margin: 0 auto; max-width: 600px;">
+          고객의 생산 환경에 맞는 최적의 자동화 솔루션을 제공합니다.<br class="desktop-br">
+          Siemens, Mitsubishi, LS산전 등 주요 플랫폼에 대한 폭넓은 기술력을 바탕으로 토탈 서비스를 책임집니다.
+        </p>
       </div>
       <div class="services-grid">
         <div class="service-card reveal">
@@ -266,7 +262,7 @@
       <div class="section-header reveal">
         <div class="section-label">Contact</div>
         <h2>프로젝트 문의</h2>
-        <p>간단한 양식 작성 후 원하시는 이메일 서비스로 편리하게 발송하세요</p>
+        <p>간단한 양식 작성 후 편리하게 발송하세요</p>
       </div>
       <div class="contact-grid">
         <div class="contact-info reveal">
