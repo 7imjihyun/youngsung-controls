@@ -210,10 +210,11 @@ img {
 /* ===== Hero Section ===== */
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 75vh;
   display: flex;
   align-items: center;
   overflow: hidden;
+  padding-top: 60px; /* Account for navbar */
 }
 
 .hero-bg {
@@ -279,6 +280,14 @@ img {
   margin-bottom: 24px;
   color: #ffffff;
   animation: fadeInUp 0.8s ease-out 0.15s both;
+}
+
+.h1-sub {
+  font-size: 0.55em;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  display: inline-block;
+  margin-bottom: 8px;
 }
 
 .hero h1 .highlight {
@@ -440,7 +449,6 @@ img {
   display: flex;
   gap: 24px;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
   padding: 16px 0 24px;
@@ -452,7 +460,6 @@ img {
 
 .portfolio-item {
   flex: 0 0 calc(100% - 48px);
-  scroll-snap-align: center;
   background: var(--bg-white);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -464,7 +471,6 @@ img {
 @media (min-width: 769px) {
   .portfolio-item {
     flex: 0 0 calc(33.333% - 16px);
-    scroll-snap-align: start;
   }
 }
 

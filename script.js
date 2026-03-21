@@ -288,12 +288,44 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// ===== Portfolio Desktop Drag to Scroll =====
+// ===== Portfolio Desktop Drag & Infinite Auto-Scroll =====
 const slider = document.querySelector('.portfolio-slider');
 if (slider) {
+  const originalItems = Array.from(slider.children);
+  
+  // Clone original items at the end for an infinite scroll effect
+  originalItems.forEach(item => {
+    const clone = item.cloneNode(true);
+    clone.classList.remove('reveal');
+    slider.appendChild(clone);
+  });
+
   let isDown = false;
   let startX;
   let scrollLeft;
+  
+  // Wait for images or layout to settle before calculating scrollWidth reliably
+  setTimeout(() => {
+    // Automatically scroll gently like a marquee
+    let autoScrollInterval = setInterval(() => {
+      if (!isDown) {
+        slider.scrollLeft += 1;
+        checkInfiniteLoop();
+      }
+    }, 20);
+  }, 500);
+
+  function checkInfiniteLoop() {
+    // Gap is 24px. The exact middle boundary is (scrollWidth + 24) / 2
+    const jumpAmount = (slider.scrollWidth + 24) / 2;
+    if (slider.scrollLeft >= jumpAmount) {
+      slider.scrollLeft -= jumpAmount;
+      if (isDown) scrollLeft -= jumpAmount; // Adjust anchor if dragged
+    } else if (slider.scrollLeft <= 0) {
+      slider.scrollLeft += jumpAmount;
+      if (isDown) scrollLeft += jumpAmount; // Adjust anchor if dragged
+    }
+  }
 
   slider.addEventListener('mousedown', (e) => {
     isDown = true;
@@ -313,7 +345,8 @@ if (slider) {
     if (!isDown) return;
     e.preventDefault();
     const x = e.pageX - slider.offsetLeft;
-    const walk = (x - startX) * 2; // Scroll-fast
+    const walk = (x - startX) * 1.5; 
     slider.scrollLeft = scrollLeft - walk;
+    checkInfiniteLoop();
   });
 }
