@@ -15,6 +15,13 @@ const CONFIG = {
   adminEmail: 'cdkey120@naver.com',
 };
 
+// ===== Preloader Logic =====
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.body.classList.add('loaded');
+  }, 400); // 0.4s premium delay
+});
+
 // ===== DOM Elements =====
 const navbar = document.getElementById('navbar');
 const navLinks = document.getElementById('navLinks');

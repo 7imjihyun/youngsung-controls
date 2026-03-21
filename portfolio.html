@@ -6,12 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>주요 포트폴리오 | 영성컨트롤</title>
   <meta name="description" content="영성컨트롤의 주요 수행 프로젝트 상세 포트폴리오입니다. 자동화 라인, 수처리 제어 등 폭넓은 사례를 확인하세요.">
+  <meta property="og:title" content="영성컨트롤 | 주요 수행 프로젝트">
+  <meta property="og:description" content="다양한 산업 현장에서 구축한 영성컨트롤의 전문적인 PLC 및 자동화 포트폴리오를 확인하세요.">
+  <meta property="og:image" content="portfolio-bg.png">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="ys_logo.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=4">
+  <link rel="stylesheet" href="style.css?v=7">
   <style>
     /* 서브 페이지 전용 스타일 */
     .navbar.sub-navbar {
@@ -162,11 +167,17 @@
 </head>
 
 <body>
+  <!-- ===== Preloader ===== -->
+  <div id="preloader">
+    <div class="spinner"></div>
+    <div class="preloader-text">YS CONTROLS</div>
+  </div>
+
   <!-- ===== Navigation ===== -->
   <nav class="navbar sub-navbar" id="navbar">
     <div class="container">
       <a href="index.html" class="nav-logo">
-        <img src="ys_logo.png" alt="YS Controls" class="logo-img" height="38">
+        <img src="ys_logo.png" alt="YS Controls" class="logo-img" height="32">
       </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="portfolio.html">포트폴리오</a></li>
@@ -296,8 +307,14 @@
   <!-- ===== Footer ===== -->
   <footer class="footer">
     <div class="container">
-      <div class="footer-content">
-        <p class="footer-copyright">
+      <div style="margin-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 32px;">
+        <div class="footer-info-text" style="font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.8;">
+          <p style="margin: 0; margin-bottom: 8px; font-size: 1.05rem; font-weight: 700; color: white;">영성컨트롤</p>
+          <p style="margin: 0;"><strong>대표 : </strong> 김영희 &nbsp;|&nbsp; <strong>사업자등록번호 : </strong> 301-44-20669</p>
+        </div>
+      </div>
+      <div class="footer-content" style="gap: 16px;">
+        <p class="footer-copyright" style="margin: 0; color: rgba(255,255,255,0.5); font-size: 0.85rem;">
           © 2025 영성컨트롤. All rights reserved.
         </p>
         <div class="footer-links">
