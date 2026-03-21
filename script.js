@@ -306,13 +306,9 @@ if (slider) {
   
   // Wait for images or layout to settle before calculating scrollWidth reliably
   setTimeout(() => {
-    // Automatically scroll gently like a marquee
-    let autoScrollInterval = setInterval(() => {
-      if (!isDown) {
-        slider.scrollLeft += 1;
-        checkInfiniteLoop();
-      }
-    }, 20);
+    slider.addEventListener('scroll', () => {
+      if (!isDown) checkInfiniteLoop();
+    });
   }, 500);
 
   function checkInfiniteLoop() {

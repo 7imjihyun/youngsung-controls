@@ -11,7 +11,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=4">
 </head>
 
 <body>
@@ -48,20 +48,19 @@
     </div>
     <div class="container">
       <div class="hero-content">
-        <div class="hero-badge">
+        <div class="hero-badge" style="margin-bottom: 64px;">
           <span class="dot"></span>
           PLC 제어 시스템 전문 기업
         </div>
-        <h1>
-          <span class="h1-sub">산업 자동화를 위한 최적의 솔루션</span><br>
-          <span class="highlight">영성컨트롤</span>
+        <h1 style="font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.5; margin-bottom: 40px; font-weight: 800; color: #ffffff;">
+          까다로운 수입 기계,<br>
+          우리 공장에 가장 완벽하게
         </h1>
-        <p>
-          정밀한 모션 제어부터 수처리 시스템까지,<br class="mobile-br"><span class="desktop-br"> </span>최적의 공장 자동화를 설계합니다.<br>
-          까다로운 해외 수입 기계 개조에도<br class="mobile-br"><span class="desktop-br"> </span>완벽히 대응하는 맞춤형 제어 솔루션.<br>
-          원격 감시 제어 시스템을 통해<br class="mobile-br"><span class="desktop-br"> </span>당신의 현장을 24시간 빈틈없이 관리합니다.
+        <p style="font-size: 1.15rem; color: rgba(255, 255, 255, 0.85); line-height: 1.8; margin: 0 auto 56px auto; max-width: 600px;">
+          단종된 부품 대체부터 복잡한 PLC 프로그램 개조까지.<br>
+          영성컨트롤이 당신의 현장에 딱 맞는<br class="mobile-br"> 최적의 자동화를 설계합니다.
         </p>
-        <div class="hero-buttons">
+        <div class="hero-buttons" style="gap: 24px;">
           <a href="#contact" class="btn btn-primary">
             ✉️ 문의하기
           </a>
@@ -82,14 +81,14 @@
       </div>
       <div class="portfolio-slider">
         <div class="portfolio-item reveal">
-          <div class="portfolio-img"><img src="service-plc.png" alt="프로젝트 1"></div>
+          <div class="portfolio-img"><img src="service-plc.png" alt="노후 수처리 설비 리뉴얼"></div>
           <div class="portfolio-content">
-            <h4>스마트 팩토리 구축</h4>
-            <p>고효율 자동화 제어반 설계 및 모니터링 시스템 연동</p>
+            <h4>수입 노후 수처리 설비 리뉴얼</h4>
+            <p>단종된 장비(B사)의 통신 에러를 완벽히 해결하는 OMRON 최신화 및 원격 모니터링 구축</p>
           </div>
         </div>
         <div class="portfolio-item reveal">
-          <div class="portfolio-img"><img src="service-plc.png" alt="프로젝트 2"></div>
+          <div class="portfolio-img"><img src="service-plc.png" alt="수처리 제어 시스템"></div>
           <div class="portfolio-content">
             <h4>수처리 제어 시스템</h4>
             <p>안정적인 무인 원격 감시 및 이중화 제어 로직 설계</p>
@@ -117,8 +116,8 @@
           </div>
         </div>
       </div>
-      <div class="portfolio-action reveal">
-        <a href="portfolio.html" class="btn btn-primary portfolio-btn">포트폴리오 자세히 보기 →</a>
+      <div class="portfolio-action reveal" style="text-align: center;">
+        <a href="portfolio.html?v=2" class="btn btn-primary" style="display: inline-flex; width: auto; padding: 14px 32px;">포트폴리오 자세히 보기 →</a>
       </div>
     </div>
   </section>
@@ -275,7 +274,7 @@
     <div class="container">
       <div class="section-header reveal">
         <div class="section-label">Contact</div>
-        <h2>프로젝트 문의</h2>
+        <h2>문의하기</h2>
         <p>간단한 양식 작성 후 편리하게 발송하세요.</p>
       </div>
       <div class="contact-grid">
@@ -320,9 +319,11 @@
                 </div>
               </div>
             </div>
-            <div class="info-response-badge">
-              <span class="response-dot"></span>
-              평균 응답 시간 : 24시간 이내
+            <div style="display: flex; justify-content: center; width: 100%; margin-top: 32px;">
+              <div class="info-response-badge" style="display: inline-flex; align-items: center; justify-content: center; margin: 0; padding: 12px 20px;">
+                <span class="response-dot"></span>
+                평균 응답 시간 : 24시간 이내
+              </div>
             </div>
           </div>
         </div>
