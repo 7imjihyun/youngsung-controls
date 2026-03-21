@@ -481,7 +481,6 @@ img {
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
   padding: 16px 0 24px;
-  scroll-snap-type: x mandatory;
 }
 
 .portfolio-slider::-webkit-scrollbar {
@@ -496,7 +495,6 @@ img {
   overflow: hidden;
   box-shadow: var(--shadow-sm);
   transition: var(--transition);
-  scroll-snap-align: center;
 }
 
 @media (min-width: 769px) {
@@ -1571,13 +1569,6 @@ textarea.form-input {
 
   .mobile-br {
     display: inline;
-  }
-
-  .hero {
-    height: auto;
-    min-height: 100svh;
-    padding-top: 140px;
-    padding-bottom: 80px;
   }
 
   .hero h1 {
