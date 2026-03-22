@@ -481,7 +481,7 @@ img {
   gap: 24px;
   overflow-x: auto;
   scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
   padding: 16px 0 24px;
 }
 
@@ -497,6 +497,7 @@ img {
   overflow: hidden;
   box-shadow: var(--shadow-sm);
   transition: var(--transition);
+  contain: layout style;
 }
 
 @media (min-width: 769px) {
@@ -505,9 +506,16 @@ img {
   }
 }
 
-.portfolio-item:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-card-hover);
+@media (hover: hover) {
+  .portfolio-item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .portfolio-item:hover .portfolio-img img {
+    transform: scale(1.05);
+    opacity: 1;
+  }
 }
 
 .portfolio-img {
@@ -524,13 +532,6 @@ img {
   opacity: 0.85;
   transition: transform 0.5s ease;
   will-change: transform;
-}
-
-
-
-.portfolio-item:hover .portfolio-img img {
-  transform: scale(1.05);
-  opacity: 1;
 }
 
 .portfolio-content {
@@ -1429,6 +1430,14 @@ textarea.form-input {
   opacity: 1;
   transform: translateY(0);
   will-change: auto;
+}
+
+/* Lighter reveal on mobile for smooth scrolling */
+@media (max-width: 768px) {
+  .reveal {
+    transform: translateY(12px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+  }
 }
 
 /* ===== Animations ===== */
