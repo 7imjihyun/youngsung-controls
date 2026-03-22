@@ -220,14 +220,12 @@ img {
   position: absolute;
   inset: 0;
   z-index: 0;
-  will-change: transform;
 }
 
 .hero-bg img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  will-change: transform;
 }
 
 .hero-bg::after {
@@ -360,6 +358,10 @@ img {
   background: radial-gradient(circle, rgba(59, 130, 246, 0.08), transparent);
   animation: float 8s ease-in-out infinite;
   will-change: transform;
+}
+
+.hero-shapes.paused .shape {
+  animation-play-state: paused;
 }
 
 .hero-shapes .shape:nth-child(1) {
@@ -516,6 +518,17 @@ img {
     transform: scale(1.05);
     opacity: 1;
   }
+}
+
+/* Tap-to-zoom for touch devices */
+.portfolio-item.tapped {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.portfolio-item.tapped .portfolio-img img {
+  transform: scale(1.05);
+  opacity: 1;
 }
 
 /* Forcefully cancel hover effects during active scrolling */

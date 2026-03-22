@@ -66,6 +66,10 @@ function handleNavScroll() {
 
   // Disable hover effects during active scroll
   document.body.classList.add('is-scrolling');
+  // Also remove any tapped zoom state
+  document.querySelectorAll('.portfolio-item.tapped').forEach(el => {
+    el.classList.remove('tapped');
+  });
   clearTimeout(scrollTimer);
   scrollTimer = setTimeout(() => {
     document.body.classList.remove('is-scrolling');
@@ -95,6 +99,35 @@ document.addEventListener('click', (e) => {
   if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
     navLinks.classList.remove('active');
     mobileMenuBtn.classList.remove('active');
+  }
+});
+
+// ===== Portfolio Tap-to-Zoom =====
+document.querySelectorAll('.portfolio-item').forEach(item => {
+  item.addEventListener('click', (e) => {
+    // Don't interfere with link clicks inside the card
+    if (e.target.closest('a')) return;
+
+    const wasTapped = item.classList.contains('tapped');
+
+    // Remove tapped from all cards
+    document.querySelectorAll('.portfolio-item.tapped').forEach(el => {
+      el.classList.remove('tapped');
+    });
+
+    // Toggle on clicked card
+    if (!wasTapped) {
+      item.classList.add('tapped');
+    }
+  });
+});
+
+// Remove tapped state when clicking outside portfolio
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.portfolio-item')) {
+    document.querySelectorAll('.portfolio-item.tapped').forEach(el => {
+      el.classList.remove('tapped');
+    });
   }
 });
 
@@ -223,6 +256,21 @@ if (sendDefault) {
     window.location.href = mailtoLink;
     closeModal();
   });
+}
+
+// ===== Pause Hero Shapes Animation When Out of View =====
+const heroShapes = document.querySelector('.hero-shapes');
+if (heroShapes) {
+  const heroObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        heroShapes.classList.remove('paused');
+      } else {
+        heroShapes.classList.add('paused');
+      }
+    });
+  }, { threshold: 0 });
+  heroObserver.observe(document.getElementById('hero'));
 }
 
 // ===== Scroll Reveal Animation (IntersectionObserver) =====
