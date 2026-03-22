@@ -496,7 +496,7 @@ img {
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
-  transition: var(--transition);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   contain: layout style;
 }
 
@@ -516,6 +516,20 @@ img {
     transform: scale(1.05);
     opacity: 1;
   }
+}
+
+/* Forcefully cancel hover effects during active scrolling */
+body.is-scrolling .portfolio-item {
+  transform: none !important;
+  box-shadow: var(--shadow-sm) !important;
+  transition: none !important;
+  pointer-events: none;
+}
+
+body.is-scrolling .portfolio-img img {
+  transform: none !important;
+  opacity: 0.85 !important;
+  transition: none !important;
 }
 
 .portfolio-img {
@@ -1617,9 +1631,15 @@ textarea.form-input {
   }
 
   .portfolio-slider {
-    padding-left: 24px;
-    padding-right: 24px;
+    flex-direction: column;
+    overflow-x: visible;
+    padding: 0 24px;
     margin: 0;
+    gap: 16px;
+  }
+
+  .portfolio-item {
+    flex: 0 0 auto;
   }
 
   .portfolio .section-header {

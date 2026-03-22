@@ -51,8 +51,9 @@ if (previewTo) {
 // ===== Form state (stored for modal use) =====
 let formData = {};
 
-// ===== Navbar Scroll Effect =====
+// ===== Navbar Scroll Effect + Scroll State Detection =====
 let lastScrollY = 0;
+let scrollTimer = null;
 
 function handleNavScroll() {
   const currentScrollY = window.scrollY;
@@ -62,6 +63,13 @@ function handleNavScroll() {
   } else {
     navbar.classList.remove('scrolled');
   }
+
+  // Disable hover effects during active scroll
+  document.body.classList.add('is-scrolling');
+  clearTimeout(scrollTimer);
+  scrollTimer = setTimeout(() => {
+    document.body.classList.remove('is-scrolling');
+  }, 150);
 
   lastScrollY = currentScrollY;
 }
