@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>주요 포트폴리오 | 영성컨트롤</title>
+  <meta name="description" content="영성컨트롤의 주요 수행 프로젝트 상세 포트폴리오입니다. 자동화 라인, 수처리 제어 등 폭넓은 사례를 확인하세요.">
+  <meta property="og:title" content="영성컨트롤 | 주요 수행 프로젝트">
+  <meta property="og:description" content="다양한 산업 현장에서 구축한 영성컨트롤의 전문적인 PLC 및 자동화 포트폴리오를 확인하세요.">
+  <meta property="og:image" content="portfolio-bg.png">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="ys_logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=7">
+  <style>
+    /* 서브 페이지 전용 스타일 */
+    .navbar.sub-navbar {
+      background: var(--primary);
+      box-shadow: 0 1px 12px rgba(0, 0, 0, 0.2);
+    }
+    
+    .sub-hero {
+      padding: 160px 0 80px;
+      background: var(--primary);
+      text-align: center;
+      color: white;
+    }
+
+    .sub-hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      margin-bottom: 20px;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .sub-hero p {
+      font-size: 1.15rem;
+      color: rgba(255, 255, 255, 0.75);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .portfolio-detail-section {
+      padding: 100px 0;
+      background: var(--bg-light);
+      min-height: 60vh;
+    }
+
+    .portfolio-grid-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+    }
+
+    .portfolio-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--bg-white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+    }
+
+    @media (min-width: 768px) {
+      .portfolio-card {
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .portfolio-card:nth-child(even) {
+        flex-direction: row-reverse;
+      }
+    }
+
+    .portfolio-card-img {
+      flex: 1;
+      min-height: 350px;
+      position: relative;
+    }
+
+    .portfolio-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+    }
+
+    .portfolio-card-content {
+      flex: 1;
+      padding: 48px;
+    }
+
+    .portfolio-card-content h3 {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+      color: var(--text-heading);
+    }
+
+    .portfolio-card-content p {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .portfolio-tags {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .portfolio-tag {
+      padding: 8px 16px;
+      background: rgba(0, 16, 61, 0.05);
+      color: var(--primary);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1px solid rgba(0, 16, 61, 0.1);
+    }
+    .project-specs {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 28px;
+    }
+    .project-specs li {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+      line-height: 1.6;
+      padding-left: 16px;
+      position: relative;
+    }
+    .project-specs li::before {
+      content: '▪';
+      color: var(--primary);
+      position: absolute;
+      left: 0;
+      top: -1px;
+    }
+    .project-specs li strong {
+      color: var(--text-heading);
+      font-weight: 600;
+      margin-right: 6px;
+    }
+    .portfolio-cta {
+      padding: 80px 0 100px;
+      background: white;
+      text-align: center;
+    }
+    .portfolio-cta h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      margin-bottom: 32px;
+      color: var(--text-heading);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ===== Navigation ===== -->
+  <nav class="navbar sub-navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <img src="ys_logo.png" alt="YS Controls" class="logo-img" height="24">
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="portfolio.html">포트폴리오</a></li>
+        <li><a href="index.html#services">서비스</a></li>
+        <li><a href="index.html#process">업무 프로세스</a></li>
+        <li><a href="index.html#contact" style="color: white !important; font-weight: 700;">문의하기</a></li>
+      </ul>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="메뉴 열기">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== Sub Hero ===== -->
+  <section class="sub-hero">
+    <div class="container">
+      <h1>수정중</h1>
+      <p>수정중</p>
+    </div>
+  </section>
+
+  <!-- ===== Detailed Portfolio Content ===== -->
+  <section class="portfolio-detail-section">
+    <div class="container">
+      <div class="portfolio-grid-detail">
+
+        <!-- Project 1 -->
+        <div class="portfolio-card reveal">
+          <div class="portfolio-card-img">
+            <img src="service-plc.png" alt="노후 수처리 설비 리뉴얼">
+          </div>
+          <div class="portfolio-card-content">
+            <h3>수입 노후 수처리 설비 리뉴얼</h3>
+            <ul class="project-specs">
+              <li><strong>고객사:</strong> B사 (화학 공장)</li>
+              <li><strong>대상 장비:</strong> 단종된 노후 일본산 수처리 설비</li>
+              <li><strong>기존 문제:</strong> 부품 단종, 잦은 통신 에러, 관리 체계 부재</li>
+              <li><strong>솔루션:</strong> OMRON 최신형 PLC 교체, 수처리 로직 완전 재설계, SCADA 원격 모니터링 구축</li>
+              <li><strong>도입 성과:</strong> 24시간 무중단 안정 가동, 제로에 가까운 에러율, 관리자의 스마트폰 실시간 모니터링 실현</li>
+            </ul>
+            <div class="portfolio-tags">
+              <span class="portfolio-tag">OMRON PLC</span>
+              <span class="portfolio-tag">SCADA 구축</span>
+              <span class="portfolio-tag">스마트폰 연동</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="portfolio-card reveal">
+          <div class="portfolio-card-img">
+            <img src="service-plc.png" alt="수처리 제어 시스템">
+          </div>
+          <div class="portfolio-card-content">
+            <h3>수처리 제어 시스템</h3>
+            <p>안정적인 무인 원격 감시 및 이중화 제어 로직 설계를 통해 산업 용수 및 오폐수 정화 시스템의 안정적 운영을 구축했습니다. 모터 펌프, 밸브 등 광범위한 하드웨어를 한곳에서 집중 제어할 수 있는 통합 솔루션을 도출했습니다.</p>
+            <div class="portfolio-tags">
+              <span class="portfolio-tag">이중화 로직</span>
+              <span class="portfolio-tag">원격 감시 도입</span>
+              <span class="portfolio-tag">펌프/밸브 제어</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="portfolio-card reveal">
+          <div class="portfolio-card-img">
+            <img src="service-plc.png" alt="수입 기계 개조 수리">
+          </div>
+          <div class="portfolio-card-content">
+            <h3>수입 기계 개조 · 수리</h3>
+            <p>보수가 불가능했던 해외 도입 노후 설비의 PLC를 전면 국산화하여 유지보수 용이성을 크게 향상시켰습니다. 국내 생산 환경에 완전히 맞춘 제어반 커스터마이징으로 조작성 또한 업그레이드 하였습니다.</p>
+            <div class="portfolio-tags">
+              <span class="portfolio-tag">단종 PLC 교체</span>
+              <span class="portfolio-tag">부품 국산화</span>
+              <span class="portfolio-tag">환경 커스터마이징</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="portfolio-card reveal">
+          <div class="portfolio-card-img">
+            <img src="service-plc.png" alt="자동화 라인 확장 설계">
+          </div>
+          <div class="portfolio-card-content">
+            <h3>자동화 라인 단계별 확장 설계</h3>
+            <p>새로 신설 · 증설되는 생산 라인과 기존의 오래된 설비들이 충돌 없이 매끄럽게 연돌 될 수 있도록 이중 릴레이 제어 및 인터록 구성을 제공했습니다. 무중단 확장을 통해 즉각적인 생산량 증대를 이루었습니다.</p>
+            <div class="portfolio-tags">
+              <span class="portfolio-tag">릴레이 인터록</span>
+              <span class="portfolio-tag">생산 라인 증설</span>
+              <span class="portfolio-tag">기존 연동 설계</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="portfolio-card reveal">
+          <div class="portfolio-card-img">
+            <img src="service-plc.png" alt="안전 감시 모니터링">
+          </div>
+          <div class="portfolio-card-content">
+            <h3>안전 구역 모니터링 모듈화</h3>
+            <p>인라인 센서 및 레이저 감지기를 메인 제어반에 직접 연동하고, 위험 징후 포착 즉시 공정을 일시 정지하는 실시간 알람 시스템을 구축했습니다. 산업 재해 발생률을 0%에 수렴하게 하는 안전한 팩토리 환경을 완성했습니다.</p>
+            <div class="portfolio-tags">
+              <span class="portfolio-tag">실시간 알람망</span>
+              <span class="portfolio-tag">센서 피드백 연동</span>
+              <span class="portfolio-tag">이상 징후 감지</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Portfolio CTA ===== -->
+  <section class="portfolio-cta">
+    <div class="container">
+      <h2>현장에 최적화된 솔루션이 필요하신가요?</h2>
+      <a href="index.html#contact" class="btn btn-primary" style="padding: 16px 40px; font-size: 1.1rem; border-radius: 50px;">지금 문의하기 →</a>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div style="margin-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 32px;">
+        <div class="footer-info-text" style="text-align: center; font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.8;">
+          <p style="margin: 0;"><strong>상호 : </strong> 영성컨트롤 &nbsp;|&nbsp; <strong>대표 : </strong> 김영희<br><strong>사업자등록번호 : </strong> 301-44-20669</p>
+        </div>
+      </div>
+      <div class="footer-content" style="gap: 16px;">
+        <p class="footer-copyright" style="margin: 0; color: rgba(255,255,255,0.5); font-size: 0.85rem;">
+          © 2025 영성컨트롤. All rights reserved.
+        </p>
+        <div class="footer-links">
+          <a href="index.html#services">서비스</a>
+          <a href="index.html#contact">문의하기</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

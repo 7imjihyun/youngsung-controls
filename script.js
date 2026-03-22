@@ -12,7 +12,7 @@
 // ===== Configuration =====
 const CONFIG = {
   // 🔧 관리자 이메일 주소 (여기만 수정하면 됩니다)
-  adminEmail: 'admin@example.com',
+  adminEmail: 'cdkey120@naver.com',
 };
 
 // ===== DOM Elements =====
@@ -93,21 +93,23 @@ document.addEventListener('click', (e) => {
 // ===== Form Progress Tracking =====
 function updateFormProgress() {
   const name = document.getElementById('senderName').value.trim();
+  const phone = document.getElementById('senderPhone').value.trim();
   const subject = document.getElementById('emailSubject').value.trim();
   const body = document.getElementById('emailBody').value.trim();
 
   let filled = 0;
   if (name) filled++;
+  if (phone) filled++;
   if (subject) filled++;
   if (body) filled++;
 
-  const percent = (filled / 3) * 100;
+  const percent = (filled / 4) * 100;
   if (formProgressBar) formProgressBar.style.width = `${percent}%`;
-  if (formProgressText) formProgressText.textContent = `${filled} / 3 필수 항목`;
+  if (formProgressText) formProgressText.textContent = `${filled} / 4 필수 항목`;
 }
 
 // Attach input listeners for progress
-['senderName', 'emailSubject', 'emailBody'].forEach(id => {
+['senderName', 'senderPhone', 'emailSubject', 'emailBody'].forEach(id => {
   const el = document.getElementById(id);
   if (el) el.addEventListener('input', updateFormProgress);
 });
@@ -173,12 +175,13 @@ contactForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
   const name = document.getElementById('senderName').value.trim();
+  const phone = document.getElementById('senderPhone').value.trim();
   const subject = document.getElementById('emailSubject').value.trim();
   const body = document.getElementById('emailBody').value.trim();
 
   // Validate required fields
-  if (!name || !subject || !body) {
-    alert('이름, 제목, 내용은 필수 입력 항목입니다.');
+  if (!name || !phone || !subject || !body) {
+    alert('이름, 연락처, 제목, 내용은 필수 입력 항목입니다.');
     return;
   }
 
