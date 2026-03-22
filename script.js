@@ -217,62 +217,57 @@ if (sendDefault) {
   });
 }
 
-// ===== Scroll Reveal Animation =====
-function revealOnScroll() {
-  const reveals = document.querySelectorAll('.reveal');
-  const windowHeight = window.innerHeight;
-
-  reveals.forEach(el => {
-    const elementTop = el.getBoundingClientRect().top;
-    const revealPoint = windowHeight - 100;
-
-    if (elementTop < revealPoint) {
-      el.classList.add('visible');
+// ===== Scroll Reveal Animation (IntersectionObserver) =====
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
     }
   });
-}
+}, { threshold: 0.15 });
 
-window.addEventListener('scroll', revealOnScroll, { passive: true });
-window.addEventListener('load', revealOnScroll);
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-// ===== Number Counter Animation =====
-function animateCounters() {
-  const counters = document.querySelectorAll('.stat-number[data-target]');
+// ===== Number Counter Animation (IntersectionObserver) =====
+function startCounter(counter) {
+  if (counter.dataset.animated) return;
+  counter.dataset.animated = 'true';
 
-  counters.forEach(counter => {
-    if (counter.dataset.animated) return;
+  const target = parseInt(counter.dataset.target);
+  const duration = 2000;
+  const startTime = performance.now();
 
-    const rect = counter.getBoundingClientRect();
-    if (rect.top > window.innerHeight || rect.bottom < 0) return;
+  function updateCounter(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
 
-    counter.dataset.animated = 'true';
-    const target = parseInt(counter.dataset.target);
-    const duration = 2000;
-    const startTime = performance.now();
+    // Ease out cubic
+    const easeOut = 1 - Math.pow(1 - progress, 3);
+    const current = Math.round(easeOut * target);
 
-    function updateCounter(currentTime) {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
+    counter.textContent = current;
 
-      // Ease out cubic
-      const easeOut = 1 - Math.pow(1 - progress, 3);
-      const current = Math.round(easeOut * target);
-
-      counter.textContent = current;
-
-      if (progress < 1) {
-        requestAnimationFrame(updateCounter);
-      } else {
-        counter.textContent = target;
-      }
+    if (progress < 1) {
+      requestAnimationFrame(updateCounter);
+    } else {
+      counter.textContent = target;
     }
+  }
 
-    requestAnimationFrame(updateCounter);
-  });
+  requestAnimationFrame(updateCounter);
 }
 
-window.addEventListener('scroll', animateCounters, { passive: true });
-window.addEventListener('load', animateCounters);
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      startCounter(entry.target);
+      counterObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('.stat-number[data-target]').forEach(el => counterObserver.observe(el));
 
 // ===== Smooth Scroll for anchor links =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
